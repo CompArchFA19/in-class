@@ -1,0 +1,4 @@
+# Ignore compiled Icarus Verilog simulations and traces
+*.vvp
+*.o
+*.vcd
