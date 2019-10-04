@@ -1,6 +1,7 @@
-`timescale 1 ns / 1 ps
+// Example of a Finite State Machine for a "self-driving" car, 
+// where the traffic light input dictates car's behavior
 
-// Example of a Finite State Machine for a self-driving car, where the traffic light input dictates car's behavior
+`include "light.v"
 
 module car(
     input [1:0] trafficlight,
@@ -17,13 +18,13 @@ module car(
     
     // Change state on the clk edges
     always @(posedge clk) begin
-        if (trafficlight == 2'b00) begin  // Green
+        if (trafficlight == `GREEN) begin
             state <= GO;
         end
-        if (trafficlight == 2'b01) begin  // Yellow
+        if (trafficlight == `YELLOW) begin
             state <= SLOW;
         end
-        if (trafficlight == 2'b10) begin  // Red
+        if (trafficlight == `RED) begin
             state <= STOP;
         end
     end  // @(posedge clk)

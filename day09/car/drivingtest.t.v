@@ -1,6 +1,9 @@
-// This module is made to test fsm.v, the traffic light fsm example.
+// Test bench for car.v, a "self-driving" car that obeys traffic lights
+
+`timescale 1 ns / 1 ps
 
 `include "car.v"
+`include "light.v"
 
 
 module driver();
@@ -23,23 +26,23 @@ module driver();
     //displays, just for the easy check.
         $dumpfile("traffic.vcd");
         $dumpvars();
-        $display("Green light = 00");
-        $display("Yellow light = 01");
-        $display("Red light = 10");
+        $display("Green light = %b", `GREEN);
+        $display("Yellow light = %b", `YELLOW);
+        $display("Red light = %b", `RED);
         $display(" light  |  Gas    Brake    Park");
-        light = 2'b00;
+        light = `GREEN;
         #50
         $display("  %b    |   %b       %b       %b", light, gas, brakes, park);
-        light = 2'b01;
+        light = `YELLOW;
         #1000
         $display("  %b    |   %b       %b       %b", light, gas, brakes, park);
-        light = 2'b10;
+        light = `RED;
         #1000
         $display("  %b    |   %b       %b       %b", light, gas, brakes, park);
-        light = 2'b00;
+        light = `GREEN;
         #1000
         $display("  %b    |   %b       %b       %b", light, gas, brakes, park);
-        light = 2'b01;
+        light = `YELLOW;
         #1000
         $display("  %b    |   %b       %b       %b", light, gas, brakes, park);
         #50
