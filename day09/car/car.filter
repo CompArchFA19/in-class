@@ -1,0 +1,4 @@
+# Filter file for GTKWave
+00 GO
+01 SLOW
+10 STOP
